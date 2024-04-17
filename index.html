@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>RudeSpace</title>
+        <title>WeirdSpace</title>
 
         <style>
             body {
@@ -36,29 +36,75 @@
             }
             
             .button {
-            position: absolute;
-            width: 200px;
-            height: 50px;
-            background-color: transparent;
-            font-family: 'myFont';
-            color: aquamarine;
-            font-size: 20px;
-            border: none;
-            text-align: center;
-            line-height: 50px;
-            cursor: pointer;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
+                position: absolute;
+                width: 200px;
+                height: 50px;
+                background-color: transparent;
+                font-family: 'myFont';
+                color: aquamarine;
+                font-size: 20px;
+                border: none;
+                text-align: center;
+                line-height: 50px;
+                cursor: pointer;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
 
-        #button1 {
-            left: calc(50% - 150px);
-        }
+            #button1 {
+                left: 50%;
+                top: 10%;
+                animation: moveButton1 5s linear infinite alternate;
+            }
 
-        #button2 {
-            left: calc(50% + 50px);
-        }
+            #button2 {
+                left: 50%;
+                top: 20%;
+                animation: moveButton2 7s linear infinite alternate;
+            }
+
+            #button3 {
+                left: 50%;
+                top: 30%;
+                animation: moveButton3 6s linear infinite alternate;
+            }
+            #button4 {
+                left: 50%;
+                top: 40%;
+                animation: moveButton4 8s linear infinite alternate;
+            }
+
+            #button5 {
+                left: 50%;
+                top: 50%;
+                animation: moveButton5 10s linear infinite alternate;
+            }
+
+            @keyframes moveButton1 {
+                0% { left: 0; }
+                100% { left: calc(100% - 100px); }
+            }
+
+            @keyframes moveButton2 {
+                0% { left: calc(100% - 100px); }
+                100% { left: 0; }
+            }
+
+            @keyframes moveButton3 {
+                0% { left: 0; }
+                100% { left: calc(100% - 100px); }
+            }
+
+            @keyframes moveButton4 {
+                0% { left: calc(100% - 100px); }
+                100% { left: 0; }
+            }
+
+            @keyframes moveButton5 {
+                0% { left: 0; }
+                100% { left: calc(100% - 100px); }
+            }
 
             #ship {
                 position: absolute;
@@ -69,14 +115,25 @@
                 pointer-events: none;
                 cursor: none;
             }
+
+            #disclaimer {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
             
         </style>
     </head>
     <body>
         <div id="stars1" class="background"></div>
         <div id="stars2" class="background"></div>
-        <div class="button" id="button1">Fuck you</div>
-        <div class="button" id="button2">You're ugly</div>
+        <div class="button" id="button1">Even farer</div>
+        <div class="button" id="button2">This is far</div>
+        <div class="button" id="button3">Space fox</div>
+        <div class="button" id="button4">Nicer game</div>
+        <div class="button" id="button5">Just a joke</div>
+        <div id="disclaimer">Disclaimer: Not to be taken seriously.</div>
         <div id="ship"></div>
         <script src="sitescript.js"></script>
     </body>
