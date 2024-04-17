@@ -12,6 +12,12 @@
                 overflow: hidden;
                 background-color: black;
                 cursor: none;
+                font-family: 'myFont', sans-serif;
+            }
+
+            @font-face {
+                font-family: 'myFont';
+                src: url('/bigmacca.ttf');
             }
 
             #stars1 {
@@ -28,7 +34,31 @@
                 0% { transform: translateY(-90%); }
                 100% { transform: translateY(0%); }
             }
+            
+            .button {
+            position: absolute;
+            width: 200px;
+            height: 50px;
+            background-color: transparent;
+            font-family: 'myFont';
+            color: aquamarine;
+            font-size: 20px;
+            border: none;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
 
+        #button1 {
+            left: calc(50% - 150px);
+        }
+
+        #button2 {
+            left: calc(50% + 50px);
+        }
 
             #ship {
                 position: absolute;
@@ -45,6 +75,8 @@
     <body>
         <div id="stars1" class="background"></div>
         <div id="stars2" class="background"></div>
+        <div class="button" id="button1">Fuck you</div>
+        <div class="button" id="button2">You're ugly</div>
         <div id="ship"></div>
         <script src="sitescript.js"></script>
     </body>
