@@ -28,7 +28,7 @@ button3.addEventListener('click', () => {
 
 button4.addEventListener('click', () => {
 
-    window.open('https://www.google.com/search?q=personal+meaning&sca_esv=d43f5111e59e559f&ei=7-AfZrnIIeKH9u8P2sWryAk&udm=&ved=0ahUKEwj5-_zvvsmFAxXig_0HHdriCpkQ4dUDCBA&uact=5&oq=personal+meaning&gs_lp=Egxnd3Mtd2l6LXNlcnAiEHBlcnNvbmFsIG1lYW5pbmcyBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHkjVDVAAWO8LcAB4AZABAJgBtgGgAbILqgEDMy45uAEDyAEA-AEBmAIGoAL0BMICChAAGIAEGIoFGEOYAwCSBwMyLjSgB7s-&sclient=gws-wiz-serp', '_blank');
+    window.open('https://www.google.com/search?q=solitaire&oq=solitaire&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDE3MzlqMGo0qAIAsAIB&sourceid=chrome&ie=UTF-8', '_blank');
 });
 
 button5.addEventListener('click', () => {
