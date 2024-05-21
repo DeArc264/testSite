@@ -133,6 +133,30 @@
                 transform: translate(-50%, 50%);
                 cursor: none;
             }
+
+            #the-star {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                background-image: url("images/star.png");
+                background-size: cover;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: none;
+                pointer-events: none;
+            }
+
+            #comet{
+                position: absolute;
+                width: 150px;
+                height: 100px;
+                background-image: url("images/comet.png");
+                background-size: cover;
+                top: 10%;
+                left: -100px;
+                display: none;
+            }
             
         </style>
     </head>
@@ -145,6 +169,8 @@
         <div class="button" id="button4"><img src = "images/card.png"></div>
         <div class="button" id="button5">Joke</div>
         <div id="ship"></div>
+        <div id="the-star"></div>
+        <div id="comet"></div>
         <script src="sitescript.js"></script>
     </body>
 </html>

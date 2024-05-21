@@ -4,6 +4,10 @@ const button2 = document.getElementById('button2');
 const button3 = document.getElementById('button3');
 const button4 = document.getElementById('button4');
 const button5 = document.getElementById('button5');
+const littlestar = document.getElementById('little-star');
+const comet = document.getElementById('comet');
+
+let starsHit = 0;
 
 document.addEventListener('click', shoot);
 
@@ -80,6 +84,10 @@ function shoot(event) {
             clearInterval(interval);
             projectile.remove();
             button5.click();
+        } else if (collision(projectile, littlestar)){
+            clearInterval(interval);
+            projectile.remove();
+            HitStar();
         }
     }, 10);
 }
@@ -95,3 +103,33 @@ function collision(projectile, button) {
         projectileRect.top <= buttonRect.bottom
     );
 }
+
+function HitStar(){
+    starsHit += 1;
+    littlestar.style.display = 'none';
+
+    if(starsHit >= 3){
+        starsHit = 0;
+        comet.style.display = 'block';
+        document.body.style.backgroundColor = 'blue';
+
+        const cometInterval = setInterval(() => {
+            const currentLeft = parseInt(meteor.style.left, 10);
+            meteor.style.left = currentLeft + 10 + 'px';
+
+            if (currentLeft > window.innerWidth) {
+                clearInterval(meteorInterval);
+                meteor.style.display = 'none';
+                meteor.style.left = '-100px';
+                document.body.style.backgroundColor = 'black';
+            }
+        }, 50);
+    }
+    
+}
+
+function showStar(){
+    littlestar.style.display = 'block';
+}
+
+setInterval(showStar, 5000);
