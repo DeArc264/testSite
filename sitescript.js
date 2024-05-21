@@ -5,7 +5,6 @@ const button3 = document.getElementById('button3');
 const button4 = document.getElementById('button4');
 const button5 = document.getElementById('button5');
 
-document.addEventListener('mousemove', moveShip);
 document.addEventListener('click', shoot);
 
 stars1.addEventListener('animationiteration', () => {
@@ -36,16 +35,11 @@ button5.addEventListener('click', () => {
     window.open('https://www.google.com/search?q=joke+meaning&sca_esv=d43f5111e59e559f&ei=GOEfZpyuBLOJ9u8P_umTuA8&ved=0ahUKEwicmqaDv8mFAxWzhP0HHf70BPcQ4dUDCBA&uact=5&oq=joke+meaning&gs_lp=Egxnd3Mtd2l6LXNlcnAiDGpva2UgbWVhbmluZzIFEAAYgAQyBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yCBAAGBYYHhgPMggQABgWGB4YDzIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeSKG8KlDWE1j7GHAGeAGQAQCYAYYBoAGQBaoBAzIuNLgBA8gBAPgBAZgCCqACzQPCAgoQABhHGNYEGLADwgINEAAYgAQYigUYQxiwA8ICCRAAGIAEGA0YE8ICCBAAGAcYHhgTwgIGEAAYBxgemAMAiAYBkAYKkgcDOC4yoAeIIg&sclient=gws-wiz-serp', '_blank');
 });
 
-function moveShip(event) {
-    const ship = document.getElementById('ship');
-
-    ship.style.left = event.clientX - ship.offsetWidth / 2 + 'px';
-    ship.style.top = event.clientY - ship.offsetHeight / 2 + 'px';
-}
 
 function shoot(event) {
-    const x = event.clientX;
-    let y = event.clientY;
+    const shipRect = ship.getBoundingClientRect();
+    const x = shipRect.left + shipRect.width / 2;
+    let y = shipRect.top;
 
     y -= 35;
 
