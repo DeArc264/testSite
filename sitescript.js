@@ -4,10 +4,11 @@ const button2 = document.getElementById('button2');
 const button3 = document.getElementById('button3');
 const button4 = document.getElementById('button4');
 const button5 = document.getElementById('button5');
-const littlestar = document.getElementById('little-star');
+const star = document.getElementById('star');
 const comet = document.getElementById('comet');
 
-let starsHit = 0;
+let starHits = 0;
+let starInterval;
 
 document.addEventListener('click', shoot);
 
@@ -20,38 +21,31 @@ button1.addEventListener('click', () => {
 });
 
 button2.addEventListener('click', () => {
-
     window.open('https://www.google.com/moon/', '_blank');
 });
 
 button3.addEventListener('click', () => {
-
-    window.open('https://www.google.com/search?q=do+a+barrel+roll&sca_esv=d43f5111e59e559f&ei=o-UfZtXgOOCG9u8P-_a8qAs&udm=&gs_ssp=eJzj4tVP1zc0TIo3SMmuMKoyYPQSSMlXSFRISiwqSs1RKMrPyQEApoAKcw&oq=do+a+barrel&gs_lp=Egxnd3Mtd2l6LXNlcnAiC2RvIGEgYmFycmVsKgIIADIKEC4YgAQYigUYQzIKEAAYgAQYigUYQzIFEAAYgAQyChAAGIAEGIoFGEMyBRAAGIAEMgUQABiABDIKEAAYgAQYigUYQzIKEAAYgAQYigUYQzIFEAAYgAQyChAAGIAEGIoFGEMyGRAuGIAEGIoFGEMYlwUY3AQY3gQY4ATYAQFIyiFQAFjcEnAAeACQAQCYAasBoAGZCqoBAzQuN7gBAcgBAPgBAZgCC6AC2QrCAgsQLhiABBjHARjRA8ICDhAuGK8BGMcBGIAEGI4FwgIOEC4YgAQYxwEYrwEYjgXCAgsQLhiABBjHARivAcICBRAuGIAEwgINEC4YgAQYxwEY0QMYCpgDALoGBggBEAEYFJIHAzMuOKAHw3M&sclient=gws-wiz-serp#ip=1', '_blank');
+    window.open('https://www.google.com/search?q=do+a+barrel+roll', '_blank');
 });
 
 button4.addEventListener('click', () => {
-
-    window.open('https://www.google.com/search?q=solitaire&oq=solitaire&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDE3MzlqMGo0qAIAsAIB&sourceid=chrome&ie=UTF-8', '_blank');
+    window.open('https://www.google.com/search?q=solitaire', '_blank');
 });
 
 button5.addEventListener('click', () => {
-
-    window.open('https://www.google.com/search?q=joke+meaning&sca_esv=d43f5111e59e559f&ei=GOEfZpyuBLOJ9u8P_umTuA8&ved=0ahUKEwicmqaDv8mFAxWzhP0HHf70BPcQ4dUDCBA&uact=5&oq=joke+meaning&gs_lp=Egxnd3Mtd2l6LXNlcnAiDGpva2UgbWVhbmluZzIFEAAYgAQyBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yCBAAGBYYHhgPMggQABgWGB4YDzIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeSKG8KlDWE1j7GHAGeAGQAQCYAYYBoAGQBaoBAzIuNLgBA8gBAPgBAZgCCqACzQPCAgoQABhHGNYEGLADwgINEAAYgAQYigUYQxiwA8ICCRAAGIAEGA0YE8ICCBAAGAcYHhgTwgIGEAAYBxgemAMAiAYBkAYKkgcDOC4yoAeIIg&sclient=gws-wiz-serp', '_blank');
+    window.open('https://www.google.com/search?q=joke+meaning', '_blank');
 });
 
-
 function shoot(event) {
-    const shipRect = ship.getBoundingClientRect();
-    const x = shipRect.left + shipRect.width / 2;
-    let y = shipRect.top;
-
-    y -= 35;
+    const shipRect = document.getElementById('ship').getBoundingClientRect();
+    const x = shipRect.left + shipRect.width / 2 - 5;
+    let y = shipRect.top - 16;
 
     const projectile = document.createElement('div');
     projectile.classList.add('projectile');
     projectile.style.position = 'absolute';
-    projectile.style.left = x - 5 + 'px';
-    projectile.style.top = y - 16 + 'px';
+    projectile.style.left = x + 'px';
+    projectile.style.top = y + 'px';
     projectile.style.width = '10px';
     projectile.style.height = '32px';
     projectile.style.backgroundImage = "url('images/shot.png')";
@@ -84,52 +78,55 @@ function shoot(event) {
             clearInterval(interval);
             projectile.remove();
             button5.click();
-        } else if (collision(projectile, littlestar)){
+        } else if (collision(projectile, star)) {
             clearInterval(interval);
             projectile.remove();
-            HitStar();
+            starHit();
         }
     }, 10);
 }
 
-function collision(projectile, button) {
+function collision(projectile, target) {
     const projectileRect = projectile.getBoundingClientRect();
-    const buttonRect = button.getBoundingClientRect();
-    
+    const targetRect = target.getBoundingClientRect();
+
     return (
-        projectileRect.right >= buttonRect.left &&
-        projectileRect.left <= buttonRect.right &&
-        projectileRect.bottom >= buttonRect.top &&
-        projectileRect.top <= buttonRect.bottom
+        projectileRect.right >= targetRect.left &&
+        projectileRect.left <= targetRect.right &&
+        projectileRect.bottom >= targetRect.top &&
+        projectileRect.top <= targetRect.bottom
     );
 }
 
-function HitStar(){
-    starsHit += 1;
-    littlestar.style.display = 'none';
+function starHit() {
+    starHits += 1;
+    star.style.display = 'none';
 
-    if(starsHit >= 3){
-        starsHit = 0;
+    if (starHits >= 3) {
+        starHits = 0;
+        clearInterval(starInterval);
         comet.style.display = 'block';
-        document.body.style.backgroundColor = 'blue';
+        comet.style.right = '-100px';
+        document.body.style.animation = 'flashBackground 4s';
 
         const cometInterval = setInterval(() => {
-            const currentLeft = parseInt(meteor.style.left, 10);
-            meteor.style.left = currentLeft + 10 + 'px';
+            const currentRight = parseInt(comet.style.right, 10);
+            comet.style.right = currentRight + 10 + 'px';
 
-            if (currentLeft > window.innerWidth) {
-                clearInterval(meteorInterval);
-                meteor.style.display = 'none';
-                meteor.style.left = '-100px';
+            if (currentRight > window.innerWidth) {
+                clearInterval(cometInterval);
+                comet.style.display = 'none';
+                comet.style.right = '-100px';
                 document.body.style.backgroundColor = 'black';
+                starInterval = setInterval(showStar, 10000);
             }
-        }, 50);
+        }, 20);
     }
-    
 }
 
-function showStar(){
-    littlestar.style.display = 'block';
+function showStar() {
+    star.style.display = 'block';
 }
 
-setInterval(showStar, 5000);
+starInterval = setInterval(showStar, 3000);
+
