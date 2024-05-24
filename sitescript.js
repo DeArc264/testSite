@@ -128,5 +128,5 @@ function showStar() {
     star.style.display = 'block';
 }
 
-starInterval = setInterval(showStar, 1000);
+starInterval = setInterval(showStar, 10000);
 
